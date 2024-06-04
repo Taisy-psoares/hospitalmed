@@ -1,0 +1,150 @@
+{
+    "info": {
+        "_postman_id": "d1c46e88-ffad-4b7f-b1a0-46a92b0c1a4b",
+        "name": "Sistema de Gestão de Consultas Médicas",
+        "description": "API para gerenciar consultas médicas, permitindo que pacientes agendem, cancelem e visualizem suas consultas.",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Agendar Consulta",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"paciente_id\": 123,\n  \"especialidade_id\": 45,\n  \"profissional_id\": 67,\n  \"data\": \"2024-06-10\",\n  \"horario\": \"14:30\"\n}"
+                },
+                "url": {
+                    "raw": "{{url}}/consultas",
+                    "host": [
+                        "{{url}}"
+                    ],
+                    "path": [
+                        "consultas"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Cancelar Consulta",
+            "request": {
+                "method": "DELETE",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}",
+                        "type": "text"
+                    }
+                ],
+                "url": {
+                    "raw": "{{url}}/consultas/789",
+                    "host": [
+                        "{{url}}"
+                    ],
+                    "path": [
+                        "consultas",
+                        "789"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Listar Consultas Agendadas",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}",
+                        "type": "text"
+                    }
+                ],
+                "url": {
+                    "raw": "{{url}}/consultas?paciente_id=123",
+                    "host": [
+                        "{{url}}"
+                    ],
+                    "path": [
+                        "consultas"
+                    ],
+                    "query": [
+                        {
+                            "key": "paciente_id",
+                            "value": "123"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Consultar Histórico de Atendimentos",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}",
+                        "type": "text"
+                    }
+                ],
+                "url": {
+                    "raw": "{{url}}/historico?paciente_id=123",
+                    "host": [
+                        "{{url}}"
+                    ],
+                    "path": [
+                        "historico"
+                    ],
+                    "query": [
+                        {
+                            "key": "paciente_id",
+                            "value": "123"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        }
+    ],
+    "event": [
+        {
+            "listen": "prerequest",
+            "script": {
+                "type": "text/javascript",
+                "exec": []
+            }
+        },
+        {
+            "listen": "test",
+            "script": {
+                "type": "text/javascript",
+                "exec": []
+            }
+        }
+    ],
+    "variable": [
+        {
+            "key": "url",
+            "value": "https://api.hospital.com/v1"
+        },
+        {
+            "key": "token",
+            "value": "your-jwt-token"
+        }
+    ]
+}
